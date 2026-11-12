@@ -1,0 +1,43 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root { --accent: #2563eb; color-scheme: light dark; }
+body { --accent-text: var(--accent); }
+/* Lighter accent for TEXT on dark backgrounds (contrast). Works with media or class-based dark mode. */
+@media (prefers-color-scheme: dark) { html:not(.light):not(.dark) body { --accent-text: color-mix(in srgb, var(--accent) 60%, white); } }
+html.dark body { --accent-text: color-mix(in srgb, var(--accent) 60%, white); }
+body .text-accent { color: var(--accent-text); }
+body .hover\:text-accent:hover { color: var(--accent-text); }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { @apply bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100; font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Inter, sans-serif; }
+.card { @apply rounded-xl border border-zinc-200 bg-white transition-[border-color,box-shadow] duration-200 dark:border-zinc-800 dark:bg-zinc-900; }
+.card:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--accent) 35%, transparent); }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition duration-150 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent; }
+.btn-primary { @apply btn bg-accent text-white hover:brightness-110; }
+.btn-ghost { @apply btn border border-zinc-300 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800; }
+.input { @apply w-full rounded-lg border border-zinc-300 bg-transparent px-3 py-2 text-sm transition-colors focus:border-accent focus:outline-none dark:border-zinc-700; }
+.tag { @apply rounded-md bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300; }
+.hero-glow { background: radial-gradient(55% 60% at 25% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%); }
+.nav-pill { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+
+
+html {
+  background-color: #ffffff;
+  color-scheme: light;
+}
+
+html.dark {
+  background-color: #09090b;
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #18181b;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark body {
+  background-color: #09090b;
+  color: #f4f4f5;
+}
